@@ -1,0 +1,338 @@
+---
+layout: post
+title: "Jekyll 블로그 머리말 설정 방법"
+date: 2024-07-11
+categories: [카테고리1, 카테고리2]
+tags: [Jekyll, 머리말]
+author: 
+permalink: /custom-url/
+published: 
+custom_variable: 
+description: "Jekyll에서 블로그 포스트와 페이지의 설정을 조정하기 위해 머리말에서 다양한 방법으로 변수를 지정할 수 있다. 머리말은 YAML 문법을 사용하여 파일의 맨 앞 부분에 배치. 주요 머리말 설정 방법"
+---
+
+## **Jekyll 블로그 머리말 설정 방법**
+
+Jekyll에서 블로그 포스트와 페이지의 설정을 조정하기 위해 머리말에서 다양한 방법으로 변수를 지정할 수 있습니다. 머리말은 일반적으로 YAML 문법을 사용하여 지정하며, 파일의 맨 앞 부분에 배치됩니다. 주요 머리말 설정 방법은 다음과 같습니다:
+
+### 기본 구성
+
+머리말은 일반적으로 다음과 같이 설정됩니다:
+
+```yaml
+---
+title: "포스트 제목"
+date: 2024-07-05
+categories: [카테고리1, 카테고리2]
+tags: [태그1, 태그2]
+---
+```
+
+이 기본 구성에서는 `title`, `date`, `categories`, `tags` 등의 기본 변수를 사용합니다.
+
+### permalink 설정
+
+고유주소(permalink)를 설정하여 포스트 또는 페이지의 URL을 지정할 수 있습니다. 예를 들어, 다음과 같이 설정할 수 있습니다:
+
+```yaml
+---
+title: "포스트 제목"
+date: 2024-07-05
+permalink: /custom-url/
+---
+```
+
+이렇게 하면 포스트의 URL이 `/custom-url/`로 설정됩니다[2][4][5].
+
+https://jekyllrb-ko.github.io/docs/permalinks/
+
+https://hoontae24.github.io/2
+
+https://ehfgk78.github.io/2017/12/27/jekyll-detail/
+
+### 기본값 설정
+
+반복되는 설정값을 줄이기 위해 `_config.yml` 파일에서 모든 포스트 또는 페이지에 적용될 기본값을 설정할 수 있습니다:
+
+```yaml
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "기본 작가"
+```
+
+이렇게 하면 모든 포스트에 대해 `layout`이 `post`로, 저자가 `기본 작가`로 설정됩니다[0].
+
+https://jekyllrb-ko.github.io/docs/configuration/front-matter-defaults/
+
+### 비공개 포스트
+
+비공개 포스트를 만들기 위해 머리말에 `published: false`를 추가할 수 있습니다:
+
+```yaml
+---
+title: "비공개 포스트"
+published: false
+---
+```
+
+이렇게 설정된 포스트는 Jekyll 사이트에 빌드되지 않습니다[3].
+
+https://twpower.github.io/86-make-jekyll-blog-post-private
+
+### 사용자 정의 변수
+
+머리말에 사용자 정의 변수를 추가하여 각 포스트마다 추가적인 정보를 저장할 수 있습니다. 예를 들어:
+
+```yaml
+---
+title: "포스트 제목"
+custom_variable: "사용자 정의 값"
+---
+```
+
+페이지 템플릿에서 이를 `{{ page.custom_variable }}` 형태로 참조할 수 있습니다[1].
+
+https://seungwubaek.github.io/blog/first_post/
+
+Jekyll에서 머리말을 설정하는 방법은 매우 유연해서 블로그의 특성과 필요에 맞게 다양한 설정 값을 추가하거나 수정할 수 있습니다.
+
+---
+
+## **Jekyll 블로그 머리말 설정하는 방법**
+
+Jekyll 블로그에서 머리말 설정은 페이지나 포스트의 외관과 동작을 제어하기 위한 중요한 구성 요소입니다. 머리말 설정은 YAML 형식으로 작성되며, 파일의 맨 위에 위치해야 합니다. 아래는 Jekyll 블로그에서 머리말을 설정하는 방법에 대한 단계별 가이드입니다.
+
+### 머리말 기본 구조
+
+머리말은 YAML 블록으로 작성되며, 세 개의 대시(`---`)로 시작하고 끝납니다. 예를 들어:
+
+```yaml
+---
+title: "포스트 제목"
+date: 2024-07-05 17:30:00 +0900
+categories: [카테고리1, 카테고리2]
+tags: [태그1, 태그2]
+---
+```
+
+이 기본 구조는 Jekyll에서 중요 속성으로 인식됩니다.
+
+### 주요 머리말 옵션
+
+아래는 Jekyll에서 자주 사용되는 머리말 옵션들입니다:
+
+- `title`: 포스트나 페이지의 제목을 설정합니다.
+- `date`: 작성일자를 지정합니다. 날짜 형식은 `YYYY-MM-DD HH:MM:SS +/-TTTT`입니다.
+- `categories`: 포스트의 분류를 지정합니다. 여러 개의 카테고리를 리스트로 나타낼 수 있습니다.
+- `tags`: 포스트의 태그를 지정합니다. 여러 태그를 리스트로 나타낼 수 있습니다.
+- `layout`: 사용할 레이아웃을 설정합니다.
+- `permalink`: 고유주소(퍼머링크)를 설정합니다. 예를 들어, `/my-custom-url/`와 같이 설정할 수 있습니다[2][4][5].
+
+### 예시
+
+- **기본 머리말 예시**
+    
+    ```yaml
+    ---
+    title: "Welcome to Jekyll!"
+    date: 2024-07-05 12:00:00 +0900
+    categories: jekyll update
+    layout: post
+    permalink: /welcome-to-jekyll/
+    tags: [introduction, jekyll]
+    ---
+    ```
+    
+- **복잡한 머리말 예시**
+    
+    ```yaml
+    ---
+    title: "복잡한 포스트"
+    author: "작성자 이름"
+    date: 2024-07-05 12:00:00 +0900
+    categories:
+      - jekyll
+      - tutorial
+    tags:
+      - 코드
+      - 예시
+      - 설명
+    layout: custom-layout
+    permalink: /tutorials/complex-post/
+    ---
+    ```
+    
+
+### 설정 파일을 통한 기본값 설정
+
+또한 `_config.yml` 파일을 통해 기본 머리말 속성을 설정해두고, 각 포스트에서 반복적으로 설정하지 않아도 되도록 할 수 있습니다. 예를 들어:
+
+```yaml
+defaults:
+  - scope:
+      path: "" # 여기서 모든 파일에 적용됨
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Your Name"
+```
+
+이렇게 설정하면 모든 포스트에 기본적으로 `post` 레이아웃과 "Your Name"이라는 작성자가 적용됩니다[0].
+
+이와 같이 Jekyll 블로그의 머리말을 설정함으로써 블로그 포스트와 페이지의 다양한 속성을 쉽게 관리할 수 있습니다.
+
+---
+
+## **Jekyll 머리말을 활용한 고유주소 설정 방법**
+
+Jekyll의 머리말(Front Matter)을 활용하여 고유주소(Permalink)를 설정하는 방법은 다음과 같습니다.
+
+### 고유주소 설정 방법
+
+- **YAML 머리말에 permalink 설정**
+    
+    가장 간단한 방법은 각 페이지나 포스트의 YAML 머리말에 `permalink` 속성을 설정하는 것입니다. 예를 들어, 특정 포스트에 대해 고유한 URL을 설정하려면 머리말에 다음과 같이 추가하면 됩니다:
+    
+    ```yaml
+    ---
+    title: "Sample Post"
+    date: 2024-07-05
+    permalink: /sample-post/
+    ---
+    ```
+    
+    위 예시에서는 해당 포스트의 URL이 `yourdomain.com/sample-post/`로 설정됩니다. 이렇게 하면 파일의 실제 디렉토리 구조와 상관없이 사이트의 URL을 유연하게 설정할 수 있습니다 [0].
+    
+- **`_config.yml` 파일에서 전체적인 설정**
+    
+    사이트 전체적으로 고유주소 패턴을 설정할 수도 있습니다. `_config.yml` 파일에서 `permalink` 항목을 설정하여 모든 포스트에 적용할 수 있습니다:
+    
+    ```yaml
+    permalink: /blog/:year/:month/:day/:title/
+    ```
+    
+    위 설정은 포스트의 URL을 `yourdomain.com/blog/2024/07/05/sample-post/`와 같이 구성됩니다 [5][7].
+    
+- **주의사항**
+    
+    블로그 페이지의 YAML 머리말에 `permalink`를 설정하면 페이지 나누기(Pagination)가 작동하지 않으므로 이것을 설정할 때 주의해야 합니다. 페이지 나누기를 사용하고자 한다면, 개별 포스트나 페이지의 머리말에 `permalink`를 설정하지 않는 것이 좋습니다 [1][2][3].
+    
+    https://ehfgk78.github.io/2017/12/27/jekyll-detail/
+    
+    https://jekyllrb-ko.github.io/docs/pagination/
+    
+    https://namhoon.kim/2017/03/27/jekyll/023/index.html
+    
+
+### 동적 Permalink 구성
+
+더 복잡한 URL 구조를 위해 Liquid 템플릿을 사용해서 동적 permalink를 구성할 수도 있습니다. 예를 들어:
+
+```yaml
+---
+title: "Sample Post"
+date: 2024-07-05
+permalink: /sample-post-{{ page.date | date: "%Y-%m-%d" }}/
+---
+```
+
+이렇게 하면 포스트의 날짜를 포함하여 고유주소를 설정할 수 있습니다 [5].
+
+https://namhoon.kim/2017/03/23/jekyll/014/index.html
+
+위와 같은 설정 방법들은 Jekyll 사이트를 보다 유연하고 사용자 정의된 형태로 관리할 수 있게 해줍니다.
+
+---
+
+## **Jekyll 레이아웃 조정하는 방법**
+
+Jekyll에서 레이아웃을 조정하는 방법은 여러 가지가 있습니다. 여기 몇 가지 주요 방법을 소개합니다.
+
+### 1. 레이아웃 파일 생성 및 수정
+
+Jekyll은 레이아웃을 통해 콘텐츠를 감싸는 템플릿을 정의합니다. `_layouts` 디렉토리 안에 레이아웃 파일을 생성할 수 있습니다. 예를 들어, `default.html` 파일을 생성하고 다음과 같이 작성할 수 있습니다:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>{{ site.title }}</h1>
+  </header>
+  <main>
+    {{ content }}
+  </main>
+  <footer>
+    <p>&copy; 2024 {{ site.author }}</p>
+  </footer>
+</body>
+</html>
+```
+
+이런 레이아웃 파일을 사용하려면 각 페이지의 머리말 부분에 `layout: default`를 추가하면 됩니다 [12].
+
+https://jekyllrb.com/docs/layouts/
+
+### 2. 머리말 기본값 설정
+
+각 페이지마다 매번 레이아웃을 설정하는 대신 `_config.yml` 파일에 기본값을 설정할 수 있습니다. 예를 들어 모든 블로그 포스트에 대해 기본 레이아웃을 설정하려면 다음과 같이 설정합니다:
+
+```yaml
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+```
+
+이를 통해 해당 경로와 유형에 해당하는 모든 콘텐츠는 자동으로 지정된 레이아웃을 사용하게 됩니다 [0][16].
+
+https://jekyllrb-ko.github.io/docs/configuration/front-matter-defaults/
+
+https://www.johanbleuzen.fr/blog/use-jekyll-front-matter-defaults-set-layouts
+
+### 3. 특정 레이아웃 커스터마이징
+
+기존 레이아웃을 커스터마이징 하려면 `_layouts` 디렉토리에서 원하는 레이아웃 파일을 열고 필요한 변화를 줄 수 있습니다. 예를 들어 `home.html` 레이아웃 파일을 수정할 수 있습니다. `index.html`에서 이를 사용하려면 다음과 같이 설정합니다:
+
+```yaml
+---
+layout: home
+---
+```
+
+이와 같이 지정한 레이아웃 파일이 `_layouts` 디렉토리에 있어야 합니다 [10][11].
+
+https://jekyllrb.com/docs/step-by-step/04-layouts/
+
+https://stackoverflow.com/questions/61872008/modifying-an-existing-jekyll-theme-to-have-static-homepage
+
+### 4. CSS 파일 재정의
+
+기존의 CSS 파일을 재정의하고 싶다면, 새로운 CSS 파일을 만들어서 레이아웃 파일에 링크를 추가합니다. 예를 들어, `custom.css` 파일을 생성하고, `default.html` 레이아웃 파일에 포함시킵니다:
+
+```html
+<head>
+  <!-- 기존 스타일 -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- 새로운 스타일 -->
+  <link rel="stylesheet" href="/assets/css/custom.css">
+</head>
+
+```
+
+이렇게 하면 `custom.css` 파일을 통해 기존 스타일을 재정의할 수 있습니다 [13].
+
+https://talk.jekyllrb.com/t/overriding-css-file-in-a-layout/294
+
+이와 같은 방법들을 통해 Jekyll 블로그의 레이아웃을 쉽게 조정하고 원하는 스타일로 커스터마이징할 수 있습니다.
