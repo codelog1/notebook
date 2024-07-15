@@ -2,8 +2,8 @@
 layout: post
 title: "Jekyll 블로그 머리말 설정 방법"
 date: 2024-07-11
-categories: [카테고리1, 카테고리2]
-tags: [Jekyll, 머리말]
+categories: [Jekyll, 블로그]
+tags: [설정, 머리말]
 author: 
 permalink: /custom-url/
 published: 
