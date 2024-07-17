@@ -62,7 +62,7 @@ version: v1.2.0
 # markdown: kramdown
 kramdown:
   # 자동으로 목차를 생성함
-  toc_levels: 1..6
+#  toc_levels: 1..6
   # Use GitHub flavored markdown, including triple backtick fenced code blocks
   input: GFM
   # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
