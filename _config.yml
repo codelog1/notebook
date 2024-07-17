@@ -59,6 +59,7 @@ permalink: /:title/
 version: v1.2.0
 
 # Jekyll 3 now only supports Kramdown for Markdown
+markdown: kramdown
 kramdown:
   # 자동으로 목차를 생성함
   toc_levels: 1..6
@@ -78,7 +79,7 @@ sass:
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
-  - jekyll-toc # 공식 jekyll-toc gem을 사용하여 목차 만들기
+#  - jekyll-toc # 공식 jekyll-toc gem을 사용하여 목차 만들기
 
 # Exclude these files from your production _site
 exclude:
